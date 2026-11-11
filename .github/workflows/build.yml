@@ -38,6 +38,7 @@ jobs:
             gstreamer1.0-plugins-base \
             gstreamer1.0-plugins-good \
             openjdk-17-jdk \
+            ant \
             autoconf \
             libtool \
             pkg-config \
@@ -51,6 +52,11 @@ jobs:
       run: |
         pip install --upgrade pip
         pip install Cython==0.29.36 buildozer
+
+    - name: Accept Android SDK licenses
+      run: |
+        mkdir -p ~/.android
+        sdkmanager --version || true
 
     - name: Build with Buildozer
       run: |
