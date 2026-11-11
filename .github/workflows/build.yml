@@ -56,11 +56,11 @@ jobs:
     - name: Accept Android SDK licenses
       run: |
         mkdir -p ~/.android
-        sdkmanager --version || true
+        yes | sdkmanager --licenses || true
 
     - name: Build with Buildozer
       run: |
-        buildozer -v android debug
+        buildozer --clean -v android debug
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
